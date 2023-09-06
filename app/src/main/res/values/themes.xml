@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.ListMovieReal" parent="Base.Theme.ListMovieReal" />
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>
