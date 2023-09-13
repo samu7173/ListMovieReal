@@ -18,4 +18,7 @@ interface MoviesDao {
 
     @Query("DELETE FROM movie_table")
     suspend fun deleteAllQuotes()
+
+    @Query("UPDATE movie_table SET corazon = :movieCorazon WHERE id = :movieId")
+    suspend fun updateCorazonToTrue(movieId:Long, movieCorazon: Boolean)
 }

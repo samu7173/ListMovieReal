@@ -8,4 +8,6 @@ data class MoviesModel (@SerializedName("id") val id:Long,
                         @SerializedName("duracion") val duracion:String,
                         @SerializedName("genero") val genero:String,
                         @SerializedName("portada") val portada:String,
+                        @SerializedName("corazon") val corazon:Boolean
+
                         )

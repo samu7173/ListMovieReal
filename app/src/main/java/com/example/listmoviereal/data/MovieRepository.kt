@@ -30,4 +30,8 @@ class MovieRepository @Inject constructor(
         quoteDao.deleteAllQuotes()
     }
 
+    suspend fun updateCorazonToTrue(movieId: Long, movieCorazon: Boolean) {
+        quoteDao.updateCorazonToTrue(movieId,movieCorazon)
+    }
+
 }

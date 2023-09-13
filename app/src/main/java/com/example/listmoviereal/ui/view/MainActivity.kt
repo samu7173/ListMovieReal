@@ -3,7 +3,6 @@ package com.example.listmoviereal.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,10 +33,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        moviesAdapter = MoviesAdapter(emptyList()) { onItemSelected(it) }
+        moviesAdapter = MoviesAdapter(emptyList(),
+            onItemClicked = { movies ->
+                onItemSelected(movies)
+            },
+            onHeartIconClicked = { movies, movieId, movieFavorite ->
+                if(!movieFavorite){
+                    moviesViewModel.onMovieItemClick(movieId,true)
+                }else{
+                    moviesViewModel.onMovieItemClick(movieId,false)
+                }
+
+            }
+        )
         binding.recyclerMovies.layoutManager = LinearLayoutManager(this)
         binding.recyclerMovies.adapter = moviesAdapter
     }
+
+
 
     private fun observeMovieData() {
         moviesViewModel.moviesLiveData.observe(this) { movies ->
